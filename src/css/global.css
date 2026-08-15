@@ -1,0 +1,10 @@
+body {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-row: repeat(3, auto);
+}
+nav {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+}
