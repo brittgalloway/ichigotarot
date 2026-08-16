@@ -1,10 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap');
+:root {
+    /* COLORS */
+    --primary-pink: #FFB7CB;
+    --primary-blue: #75C4ED;
+    --primary-purple: #5A5E9B;
+    --pastle-purple: #F6CBF8;
+    --pastle-green: #CBF7D6;
+    --pastle-cyan: #CAF7F0;
+    --text-color: var(--primary-purple);
+
+    /* FONTS */
+    --title-font: "Cormorant Garamond", serif;
+    --body-font: Arial, Helvetica, sans-serif;
+    /* SPACING */
+    --xtra-small:1rem;
+    --small: 2rem;
+    --medium: 4rem;
+    --large: 8rem;
+}
+
 body {
     width: 100%;
     display: grid;
     grid-template-columns: 20% 80%;
     grid-row: repeat(3, auto);
+    color: var(--text-color);
+    background: var(--primary-pink);
+    text-align: center;
+}
+/* TYPOGRAPHY */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--title-font);
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: var(--text-color);
+    line-height: 1.25;
+    text-align: center;
+}
+h1 {
+    font-size: 6rem;
+}
+h2 {
+    font-size: 4rem;
+}
+h3,
+h4 {
+    font-size: 2rem;
+}
+p {
+    font-family: var(--body-font);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+hr {
+    border: 2px solid white;
+    width: 60%;
+}
+button {
+    background: transparent;
+    border: 5px solid white;
+    border-radius: 12px;
+    color: white;
+    font-size: 2rem;
+    padding: var(--xtra-small);
 }
 nav {
     grid-column: 1 / 2;
     grid-row: 1 / 4;
+    li {
+        padding: 1.5rem;
+        &:hover {
+            cursor: pointer;
+            a {
+                text-decoration-color: #ffffff;
+            }
+        }
+        a {
+            font-family: var(--body-font);
+            font-size: 2rem;
+            color: white;
+            text-decoration-color: #FFFFFF00;
+        }
+    }
+}
+header,
+main > section:not(#shop),
+#shop > div,
+footer {
+    padding: var(--medium);
+}
+main {
+    background: var(--pastle-purple);
+}
+.position1{
+    background: var(--primary-pink);
+}
+.position2{
+    /* background: var(--pastle-cyan); */
+}
+.position3{
+    background: var(--primary-purple);
+    h2,
+    p {
+        color: white;
+    }
+}
+#products{
+    background: var(--primary-blue);
+}
+#upcoming-projects{
+    background: var(--pastle-cyan);
+}
+#contact{
+    background: var(--pastle-green);
 }
