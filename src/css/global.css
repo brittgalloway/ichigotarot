@@ -27,6 +27,7 @@ body {
     color: var(--text-color);
     background: var(--primary-pink);
     text-align: center;
+    overflow: clip;
 }
 /* TYPOGRAPHY */
 h1,
@@ -40,6 +41,8 @@ h4 {
     color: var(--text-color);
     line-height: 1.25;
     text-align: center;
+    filter: drop-shadow(3px 3px 0 white);
+    text-transform: uppercase;
 }
 h1 {
     font-size: 6rem;
@@ -55,10 +58,12 @@ p {
     font-family: var(--body-font);
     font-size: 1rem;
     line-height: 1.5;
+    width: 60ch;
 }
 hr {
     border: 2px solid white;
-    width: 60%;
+    width: 16em;
+    margin: 5rem auto;
 }
 button {
     background: transparent;
@@ -87,11 +92,26 @@ nav {
         }
     }
 }
+.container {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 header,
 main > section:not(#shop),
 #shop > div,
 footer {
     padding: var(--medium);
+    filter: drop-shadow(0 4px 15px #00000038)
+}
+header {
+    background-image: url(../assets/tarot-spread.jpg);
+    p {
+        font-size: var(--small);
+        font-weight: bold;
+        color: white;
+        filter: drop-shadow(3px 3px 0 var(--primary-purple));
+    }
 }
 main {
     background: var(--pastle-purple);
@@ -100,17 +120,26 @@ main {
     background: var(--primary-pink);
 }
 .position2{
-    /* background: var(--pastle-cyan); */
-}
-.position3{
     background: var(--primary-purple);
     h2,
     p {
         color: white;
     }
+    h2 {
+        filter: drop-shadow(3px 3px 0 black);
+    }
 }
 #products{
     background: var(--primary-blue);
+    .product-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+        grid-auto-rows: auto;
+        a.product {
+            max-width: 300px;
+            height: auto;
+        }
+    }
 }
 #upcoming-projects{
     background: var(--pastle-cyan);
