@@ -12,18 +12,20 @@
     /* FONTS */
     --title-font: "Cormorant Garamond", serif;
     --body-font: Arial, Helvetica, sans-serif;
+
     /* SPACING */
     --xtra-small:1rem;
     --small: 2rem;
     --medium: 4rem;
     --large: 8rem;
+
+    --transition: 300ms;
 }
 
 body {
     width: 100%;
     display: grid;
     grid-template-columns: 20% 80%;
-    grid-row: repeat(3, auto);
     color: var(--text-color);
     background: var(--primary-pink);
     text-align: center;
@@ -56,35 +58,49 @@ h4 {
 }
 p {
     font-family: var(--body-font);
-    font-size: 1rem;
+    font-size: 1.25rem;
     line-height: 1.5;
     width: 60ch;
+    max-width: 100%;
+    text-align: center;
+    margin: auto;
 }
 hr {
     border: 2px solid white;
     width: 16em;
     margin: 5rem auto;
 }
-button {
-    background: transparent;
+.button {
+    font-family: var(--body-font);
+    font-size: 1.5rem;
+    padding: var(--xtra-small);
     border: 5px solid white;
     border-radius: 12px;
     color: white;
-    font-size: 2rem;
-    padding: var(--xtra-small);
+    text-decoration: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 300ms;
+    &:hover {
+        color: var(--primary-purple);
+        border-color: var(--primary-purple)
+    }
 }
 nav {
     grid-column: 1 / 2;
     grid-row: 1 / 4;
     li {
-        padding: 1.5rem;
+        transition: all var(--transition);
         &:hover {
+            background-color: var(--primary-purple);
             cursor: pointer;
             a {
                 text-decoration-color: #ffffff;
             }
         }
         a {
+            display: block;
+            padding: 1.5rem;
             font-family: var(--body-font);
             font-size: 2rem;
             color: white;
@@ -102,10 +118,19 @@ main > section:not(#shop),
 #shop > div,
 footer {
     padding: var(--medium);
-    filter: drop-shadow(0 4px 15px #00000038)
+    position: relative;
+    box-shadow: 0 5px 5px #00000025;
+    overflow: hidden;
+}
+.falling-star {
+    position: absolute;
+    pointer-events: none;
+    fill: white;
 }
 header {
     background-image: url(../assets/tarot-spread.jpg);
+    background-blend-mode: multiply;
+    z-index: 7;
     p {
         font-size: var(--small);
         font-weight: bold;
@@ -116,10 +141,35 @@ header {
 main {
     background: var(--pastle-purple);
 }
+.position1,
+.position2{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    box-shadow: 0 5px 5px #00000025;
+    h2 {
+        font-size: 3rem;
+    }
+    p {
+        text-align: right;
+        justify-self: end;
+    }
+}
 .position1{
     background: var(--primary-pink);
+    z-index: 6;
+    p,
+    .button {
+        grid-column: 2 / 3;
+        width: fit-content;
+        height: fit-content;
+    }
+    .button {
+        align-self: end;
+        justify-self: end;
+    }
 }
 .position2{
+    z-index: 5;
     background: var(--primary-purple);
     h2,
     p {
@@ -127,9 +177,18 @@ main {
     }
     h2 {
         filter: drop-shadow(3px 3px 0 black);
+        grid-column: 2 / 3;
+    }
+    p {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        text-align: left;
+        justify-self: start;
+        align-self: center;
     }
 }
 #products{
+    z-index: 4;
     background: var(--primary-blue);
     .product-wrapper {
         display: grid;
@@ -141,9 +200,18 @@ main {
         }
     }
 }
+#about{
+    z-index: 3;
+}
 #upcoming-projects{
-    background: var(--pastle-cyan);
+    background-image: url(../assets/chamber-time-bg_inverted.webp);
+    background-color: var(--pastle-cyan);
+    background-blend-mode: overlay;
+    z-index: 2;
 }
 #contact{
     background: var(--pastle-green);
+}
+.hidden {
+    display: none !important;
 }
