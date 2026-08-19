@@ -30,6 +30,10 @@ body {
     background: var(--primary-pink);
     text-align: center;
     overflow: clip;
+    @media (width < 830px) {
+        display: block;
+        overflow-y: auto;
+    }
 }
 /* TYPOGRAPHY */
 h1,
@@ -56,7 +60,8 @@ h3,
 h4 {
     font-size: 2rem;
 }
-p {
+p,
+footer {
     font-family: var(--body-font);
     font-size: 1.25rem;
     line-height: 1.5;
@@ -107,11 +112,24 @@ nav {
             text-decoration-color: #FFFFFF00;
         }
     }
+    @media (width < 830px) {
+        max-width: 200px;
+        margin: auto;
+        li {
+            width: 100%;
+        a {
+            padding: var(--xtra-small);
+        }
+        }
+    }
 }
 .container {
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
+    @media (width < 830px) {
+        height: auto;
+    }
 }
 header,
 main > section:not(#shop),
@@ -121,14 +139,23 @@ footer {
     position: relative;
     box-shadow: 0 5px 5px #00000025;
     overflow: hidden;
+    @media (width < 830px) {
+        padding: var(--small);
+    }
+}
+footer {
+    box-shadow: none;
 }
 .falling-star {
     position: absolute;
     pointer-events: none;
     fill: white;
+    filter: drop-shadow(3px 3px 0 var(--primary-purple));
 }
 header {
     background-image: url(../assets/tarot-spread.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     background-blend-mode: multiply;
     z-index: 7;
     p {

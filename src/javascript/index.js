@@ -15,17 +15,18 @@ gsap.utils.toArray('#white-stars [id$=star]').forEach((star) => {
 // const starCount = 15;
 
 document.querySelectorAll('main > section:not(#shop), #shop > div, header').forEach((section) => {
-    createFallingStars(section, 12)
+    createFallingStars(section, 5, '.star-round', 17);
+    createFallingStars(section, 9, '.star-point', 30);
 })
 
-function createFallingStars(container, count = 15) {
-    const $templates = document.querySelectorAll('.star-template .falling-star');
+function createFallingStars(container, count = 15, template, max) {
+    const $templates = document.querySelectorAll(`.star-template ${template}`);
     const containerHeight = container.offsetHeight;
     for (let i=0; i < count; i ++) {
         const template = $templates[Math.floor(Math.random() * $templates.length)];
         const star = template.cloneNode(true);
 
-        const size = gsap.utils.random(6, 16);
+        const size = gsap.utils.random(10, max);
         star.style.position = 'absolute';
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
@@ -40,27 +41,49 @@ function createFallingStars(container, count = 15) {
 }
 
 function animateStar (star, containerHeight) {
-    const duration = gsap.utils.random(9, 30);
-    const delay = gsap.utils.random(0, 5);
-    const drift = gsap.utils.random(-20, 20);
-    const startY = gsap.utils.random(-40, 0); //stagger
-
+    const startX = gsap.utils.random(0, 95);
+    const startY = gsap.utils.random(0, containerHeight * 0.7);
+    const driftDistance = gsap.utils.random(30, 70);
+    const totalDuration = gsap.utils.random(2.5, 4); 
+    const delay = gsap.utils.random(0, 4); 
+    
+    gsap.set(star, {
+        left: `${startY}%`, 
+        top: `${startY}px`, 
+        opacity: 0,
+        scale: 0.6
+    });
     const tl = gsap.timeline({
         delay,
         repeat: -1,
         onRepeat: () => {
-            gsap.set(star, { left: `${gsap.utils.random(0, 95)}%`, y: startY});
-            tl.vars.repeatDelay = gsap.utils.random(0, 3);
+            const newX = gsap.utils.random(0,95);
+            const newY = gsap.utils.random(0, containerHeight * 0.7);
+            gsap.set(star, { 
+                left: `${newX}%`, 
+                top: `${newY}px`,
+                y: 0,
+                scale:0.6
+            });
         }
     });
     
-    gsap.set(star, { y: startY, x: 0, opacity: 0});
 
-    tl.to(star, { opacity: 1, duration: duration * 0.15, ease: 'sine.out'})
-    .to(star, {
-        y: containerHeight +20,
-        x: `+=${drift}`,
+    tl.to(star, { 
+        opacity: 1, 
+        scale: 1,
+        duration: totalDuration * 0.25, 
+        ease: 'sine.out'
+    }).to(star, {
+        opacity: 0.8,
+        scale: 0.8,
+        duration: 0.5,
+        repeat: 1,
+        yoyo: true,
         ease: 'sine.inOut'
-    }, 0)
-    .to(star, { opacity:0, duration: duration * 0.2, ease: 'sine.in'}, `-=${duration * 0.2}`);
+    }, '<').to(star, { 
+        opacity:0, 
+        scale: 0.5,
+        duration: totalDuration * 0.3, 
+        ease: 'sine.in'}, `-=${totalDuration * 0.3}`);
 }
