@@ -87,3 +87,12 @@ function animateStar (star, containerHeight) {
         duration: totalDuration * 0.3, 
         ease: 'sine.in'}, `-=${totalDuration * 0.3}`);
 }
+
+// close popup when a nav link is clicked
+const mainNav= document.getElementById('main-nav');
+
+mainNav.addEventListener('click', (e) => {
+    if (e.target.closest('a')) {
+        mainNav.hidePopover();
+    }
+})
