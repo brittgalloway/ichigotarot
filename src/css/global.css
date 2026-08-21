@@ -96,6 +96,7 @@ nav {
     grid-row: 1 / 4;
     background: inherit;
     position: static;
+    width: 100%;
     li {
         transition: all var(--transition);
         &:hover {
@@ -315,14 +316,48 @@ main {
             color: white;
             font-size: var(--small);
             font-weight: bold;
+            position: relative;
+            overflow: clip;
+            transition: filter var(--transition) ease;
             img {
                 width: 100%;
                 height: auto;
+                transition: filter var(--transition) ease;
+                filter: blur(2px);
             }
             img,
             span {
                 grid-column: 1/2;
                 grid-row: 1/2;
+                transition: opacity var(--transition) ease;
+                z-index: 1;
+            }
+            span {
+                filter: drop-shadow(3px 3px 0 black);
+            }
+            .cta {
+                opacity: 0;
+                pointer-events: none;
+            }
+            &:hover img,
+            &:focus-visible img,
+            &:focus-within img {
+                filter: brightness(0.6);
+            }
+            &:hover .cta,
+            &:focus-visible .cta,
+            &:focus-within .cta {
+                opacity: 1;
+            }
+            &:hover span:not(.cta),
+            &:focus-visible span:not(.cta),
+            &:focus-within span:not(.cta) {
+                opacity: 0;
+            }
+            &:hover,
+            &:focus-visible,
+            &:focus-within {
+                filter: drop-shadow(0 3px 3px black);
             }
         }
     }
@@ -341,4 +376,11 @@ main {
 }
 .hidden {
     display: none !important;
+}
+/* mailerlite */
+.ml-embedded {
+    margin-top: var(--medium);
+}
+#mlb2-45057527.ml-form-embedContainer {
+    display: block !important;
 }
