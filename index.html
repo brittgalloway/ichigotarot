@@ -7,7 +7,7 @@
     <meta name="description"
         content="Discover luxury tarot decks crafted with gilded edges, premiun cardstock, and original artwork. Elevate your practice with heirloom-quality decks made for collectors and readers alike.">
     <link rel="icon" href="./src/assets/favicon.ico" type="image/x-icon">
-    <title>Ichigo Tarot | Chicago Luxury and Publishing</title>
+    <title>Ichigo Tarot | Chicago Luxury Tarot and Publishing</title>
     <link rel="stylesheet" href="./src/css/reset.css">
     <link rel="stylesheet" href="./src/css/global.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.1/cdn.min.js"></script>
@@ -15,11 +15,12 @@
 </head>
 
 <body>
-    <h1 style="place-items: center;grid-column: 1 / 3;">Insights coming soon</h1>
-    <!-- <nav>
+    <button id="burger" popovertarget="main-nav"><img src="./src/assets/strawberry-burger.svg" alt="" /></button>
+    <nav id="main-nav" popover="auto">
+        <button id="close" popovertarget="main-nav"><img src="./src/assets/strawberry-close.svg" alt="" /></button>
         <ul>
             <li>
-                <a href="#header">
+                <a href="#header" id="logo">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:serif="http://www.serif.com/" width="100%" height="100%" viewBox="0 0 3434 4283" version="1.1" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
                         title="Ichigo Tarot logo"
                         <g transform="matrix(1,0,0,1,-5511.257159,-39.671388)">
@@ -224,9 +225,9 @@
             <section id="shop">
                 <div class="feature position1">
                     <h2>What makes our deck special?</h2>
-                    <p>This is a fully illustrated 78-card deck -- not a pip deck -- infused with esoteric symbolism and
+                    <p>This is a fully illustrated 78-card deck &mdash; not a pip deck &mdash; infused with esoteric symbolism and
                         aligned with the emotional lore of magical girl themes.</p>
-                    <a href="" class="button">Shop now</a>
+                    <a href="https://pp-tarot-ichigo-tarot-sale.replit.app/" class="button">Shop now</a>
                 </div>
                 <div class="feature position2">
                     <h2>Let magic come to life in your hands!</h2>
@@ -234,33 +235,27 @@
                         Tarot System. Five years in the making, this tarot deck offers depth, clarity and connection for the
                         readers at any stage.</p>
                 </div>
-                <!-- <div class="feature position3">
-                    <h2>Embrace your dark side</h2>
-                    <p>Tarot is a powerful tool for exploring you inner world and doing deep shadow work. This tarot is the
-                        perfect way to connect with their own inner voice to find a path towards transformation.</p>
-                </div> --
                 <div id="products">
                     <h2>Products</h2>
                     <p>Tarot is a powerful tool for exploring you inner world and doing deep shadow work. This tarot is the
                         perfect way to connect with their own inner voice to find a path towards transformation.</p>
                     <hr/>
                     <div class="product-wrapper">
-                        <a class="product" href="" aria-label="Checkout PPT Deck details.">
-                            <img src="" alt="Ichigo Tarot's PPT deck" />
-                            PPT Deck
+                        <a class="product" href="https://pp-tarot-ichigo-tarot-sale.replit.app/" aria-label="Checkout PPT Deck details.">
+                            <img src="./src/assets/ppt-deck.webp" alt="Ichigo Tarot's PPT deck" />
+                            <span>PPT Deck</span>
+                            <span class="cta">Go to Checkout</span>
                         </a>
-                        <a class="product" href="" aria-label="Checkout PPT Bundle details.">
-                            <img src="" alt="Ichigo Tarot's PPT Bundle" />
-                            PPT Bundle
+                        <a class="product" href="https://pp-tarot-ichigo-tarot-sale.replit.app/" aria-label="Checkout PPT Bundle details.">
+                            <img src="./src/assets/ppt-bundle-tarot-oracle-journal.webp" alt="Ichigo Tarot's PPT Bundle" />
+                            <span>PPT Bundle</span>
+                            <span class="cta">Go to Checkout</span>
                         </a>
-                        <a class="product" href="" aria-label="Checkout PPT Matchbooks details.">
-                            <img src="" alt="Ichigo Tarot's PPT matchbooks" />
-                            PPT Matchbooks
+                        <a class="product" href="https://pp-tarot-ichigo-tarot-sale.replit.app/" aria-label="Checkout PPT Matchbooks details.">
+                            <img src="./src/assets/ppt-matchbooks.webp" alt="Ichigo Tarot's PPT matchbooks" />
+                            <span>PPT Matchbooks</span>
+                            <span class="cta">Go to Checkout</span>
                         </a>
-                        <!-- <a class="product" href="" aria-label="Checkout PPT Journal details.">
-                            <img src="" alt="Ichigo Tarot's PPT Journal" />
-                            PPT Journal
-                        </a> --
                     </div>
                 </div>
             </section>
@@ -278,21 +273,30 @@
                 <hr/>
                 <!-- <h3>Get a Glimpse of Our Future</h3> --
                 <h3>Chambers of Time</h3>
-                <p>Coming to Kickstarter</p>
                 <p>We are all waiting for something.
-                    A new love, a job opportunity, or a chance to prove one’s self.
+                    A new love, a job opportunity, or a chance to prove one&apos;s self.
                     Let the Chambers of Time guide you through all your different seasons.</p>
             </section>
             <section id="contact">
                 <h2>Contact us</h2>
                 <hr/>
-                <h3>Let’s Connect, we’d love to hear from you</h3>
+                <h3>Let&apos;s Connect, we&apos;d love to hear from you</h3>
+                <div class="ml-embedded" data-form="vGIgFX"></div>
             </section>
         </main>
         <footer>Ichigo Tarot 2026</footer>
     </div>
-    <script defer src="./src/javascript/index.js"></script> -->
+    <script defer src="./src/javascript/index.js"></script>
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '1629094');
+    </script>
+    <!-- End MailerLite Universal -->
+
 </body>
 
 </html>
-<!-- https://www.figma.com/design/hgbelmtWDfx5hOYYF5gDR4/Ichigo-Tarot?node-id=36-55&t=QSCyf6Du0GM7ECHT-0 -->
