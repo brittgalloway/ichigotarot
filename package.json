@@ -1,0 +1,9 @@
+{
+    "name": "Ichigo Tarot",
+    "private": true,
+    "scripts": {
+        "build": "node scripts/build-components.js",
+        "watch": "node scripts/build-components.js --watch",
+        "dev": "npx concurrently \"npm run watch\" \"npx live-server --port=5500\""
+    }
+}

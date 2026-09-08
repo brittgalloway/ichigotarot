@@ -1,0 +1,4 @@
+{
+    "buildCommend": "npm run build",
+    "outputDirectory": "."
+}
