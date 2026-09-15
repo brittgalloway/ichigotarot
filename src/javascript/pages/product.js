@@ -16,7 +16,7 @@ document.addEventListener('alpine:init', () => {
                 this.product = products.find((p) => p.slug === slug) || null;
 
                 if (this.product) {
-                    this.selectedVariant = this.product.selectedVariant;
+                    this.selectedVariant = this.product.variants[0];
                     document.title = `${this.product.title} | Ichigo Tarot`;
                 } else {
                     this.error = true;
@@ -28,7 +28,7 @@ document.addEventListener('alpine:init', () => {
                 this.loading = false;
             }
         },
-        selectedVariant(variant) {
+        selectVariant(variant) {
             this.selectedVariant = variant;
         },
         get displayImage() {
@@ -42,9 +42,19 @@ document.addEventListener('alpine:init', () => {
             }
             return `$${this.selectedVariant.price}`;
         },
-        // TODO: addToCart
+        
         addToCart() {
-            console.log('add to cart')
+            if (!this.product || !this.selectedVariant) return;
+
+            Alpine.store('cart').addItem({
+                slug: this.product.slug,
+                title: this.product.title,
+                variantLabel: this.selectedVariant.label,
+                price: this.selectedVariant.price,
+                img: this.displayImage
+            });
+
+            document.querySelector('site-cart')?.open()
         }
     }))
 })

@@ -52,7 +52,7 @@
             <p>Luxury tarot and publishing</p>
         </header>
         <main>
-            <section id="catalog" x-data="catalogPage()">
+            <section id="catalog" x-data="productGrid()">
                 <p x-show="loading">Loading products&hellip;</p>
                 <p x-show="error">Something went wrong loading the shop. Please refresh.</p>
                 <div id="products">
@@ -75,7 +75,7 @@
     </div>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script type="module" src="./src/javascript/main.js"></script>
-    <script type="module" src="./src/javascript/pages/catalog.js"></script>
+    <script type="module" src="./src/javascript/product-grid.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.1/cdn.min.js"></script>
     <!-- MailerLite Universal -->
     <script>

@@ -66,27 +66,21 @@
                         Tarot System. Five years in the making, this tarot deck offers depth, clarity and connection for the
                         readers at any stage.</p>
                 </div>
-                <div id="products">
+                <div id="products" x-data="productGrid({ collection: 'PPT' })">
                     <h2>Products</h2>
                     <p>Tarot is a powerful tool for exploring you inner world and doing deep shadow work. This tarot is the
                         perfect way to connect with their own inner voice to find a path towards transformation.</p>
                     <hr/>
-                    <div class="product-wrapper">
-                        <a class="product" href="https://pp-tarot-ichigo-tarot-sale.replit.app/" aria-label="Checkout PPT Deck details.">
-                            <img src="./src/assets/ppt-deck.webp" alt="Ichigo Tarot's PPT deck" />
-                            <span>PPT Deck</span>
-                            <span class="cta">Go to Checkout</span>
-                        </a>
-                        <a class="product" href="https://pp-tarot-ichigo-tarot-sale.replit.app/" aria-label="Checkout PPT Bundle details.">
-                            <img src="./src/assets/ppt-bundle-tarot-oracle-journal.webp" alt="Ichigo Tarot's PPT Bundle" />
-                            <span>PPT Bundle</span>
-                            <span class="cta">Go to Checkout</span>
-                        </a>
-                        <a class="product" href="https://pp-tarot-ichigo-tarot-sale.replit.app/" aria-label="Checkout PPT Matchbooks details.">
-                            <img src="./src/assets/ppt-matchbooks.webp" alt="Ichigo Tarot's PPT matchbooks" />
-                            <span>PPT Matchbooks</span>
-                            <span class="cta">Go to Checkout</span>
-                        </a>
+                    <p x-show="loading">Loading products&hellip;</p>
+                    <p x-show="error">Something went wrong loading products. Please refresh.</p>
+                    <div class="product-wrapper" x-show="!loading && !error">
+                        <template x-for="product in products" :key="product.slug">
+                            <a class="product" :href="`./product.html?slug=${product.slug}`" :aria-label="`View ${product.title} details.`">
+                                <img :src="product.img" :alt="Ichigo Tarot's `${product.title}`" />
+                                <span x-text="product.title"></span>
+                                <span class="cta" x-text="displayPrice(product)"></span>
+                            </a>
+                        </template>
                     </div>
                 </div>
             </section>
@@ -113,6 +107,7 @@
     </div>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script type="module" src="./src/javascript/main.js"></script>
+    <script type="module" src="./src/javascript/product-grid.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.1/cdn.min.js"></script>
     <!-- MailerLite Universal -->
     <script>

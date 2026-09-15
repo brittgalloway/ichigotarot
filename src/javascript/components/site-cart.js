@@ -10,7 +10,7 @@ class SiteCart  extends HTMLElement {
         this.dialog = this.querySelector('#site-cart-dialog');
         if (!this.dialog) return;
 
-        const closeBtn = this.querySelector('#site-ccart-close');
+        const closeBtn = this.querySelector('#site-cart-close');
         closeBtn?.addEventListener('click', () => this.close());
 
         this.dialog.addEventListener('click', (e) => {

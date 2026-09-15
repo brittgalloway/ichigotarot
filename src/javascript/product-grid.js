@@ -1,5 +1,5 @@
 document.addEventListener('alpine:init', () => {
-    Alpine.data('catalogPage', () => ({
+    Alpine.data('productGrid', (options = {}) => ({
         products: [],
         loading: true,
         error: false,
@@ -9,7 +9,11 @@ document.addEventListener('alpine:init', () => {
                 
                 const res = await fetch('./src/data/products.json');
                 if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
-                this.products = await res.json();
+                const all = await res.json();
+
+                this.products = options.collection
+                    ? all.filter((p) => p.collection === options.collection)
+                    : all;
             } catch (err) {
                 console.error('Failed to load products:', err);
                 this.error = true;
