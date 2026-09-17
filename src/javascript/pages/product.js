@@ -36,7 +36,6 @@ document.addEventListener('alpine:init', () => {
             return (this.selectedVariant && this.selectedVariant.img) || this.product.img;
         },
         get displayPrice() {
-            console.log(this.selectedVariant)
             if (!this.selectedVariant || this.selectedVariant.price === '') {
                 return 'Sold Out'
             }
