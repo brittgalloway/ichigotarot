@@ -3,10 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description"
-        content="Shop luxury tarot decks crafted with gilded edges, premium cardstock, and original artwork." href="./src/assets/favicon.ico" type="image/x-icon">
-    <title>Shop | Ichigo Tarot</title>
+    <title>Thank you! | Ichigo Tarot</title>
     <link rel="stylesheet" href="./src/css/reset.css">
     <link rel="stylesheet" href="./src/css/global.css">
 </head>
@@ -60,9 +59,11 @@
         <site-cart></site-cart>
         <site-footer></site-footer>
     </div>
+    <script type="text/javascript">
+        localStorage.removeItem('ichigotarot-cart');
+    </script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script type="module" src="./src/javascript/main.js"></script>
-    <script type="module" src="./src/javascript/product-grid.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.1/cdn.min.js"></script>
     <!-- MailerLite Universal -->
     <script>
