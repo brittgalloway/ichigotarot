@@ -6,7 +6,7 @@
         <span id="site-cart-count" x-show="$store.cart.count > 0" x-text="$store.cart.count"></span>
     </button>
     <dialog id="site-cart-dialog">
-        <button id="site-cart-close" aria-label="Close cart">Close</button>
+        <button id="site-cart-close" aria-label="Close cart"><img src="./src/assets/strawberry-close.svg" width="30px" height="auto" /></button>
         <h2>Your Cart</h2>
         <p x-show="$store.cart.items.length === 0">Cart is empty.</p>
     
@@ -14,15 +14,18 @@
             <template x-for="item in $store.cart.items" :key="item.slug + '-' + item.variantLabel">
                 <li>
                     <img :src="item.img" :alt="item.title"/>
-                    <span x-text="item.title"></span>
-                    <span x-text="item.variantLabel"></span>
-                    <span x-text="'$' + item.price"></span>
-                    <input type="number" min="0" :value="item.quantity" @change="$store.cart.updateQuantity(item.slug, item.variantLabel, parseInt($event.target.value))" />
+                    <span class="title" x-text="item.title"></span>
+                    <span class="variant" x-text="item.variantLabel"></span>
+                    <span class="price" x-text="'$' + item.price"></span>
+                    <fieldset>
+                        <label>Qty</label>
+                        <input type="number" min="0" :value="item.quantity" @change="$store.cart.updateQuantity(item.slug, item.variantLabel, parseInt($event.target.value))" />
+                    </fieldset>
                     <button type="button" @click="$store.cart.removeItem(item.slug, item.variantLabel)">Remove</button>
                 </li>
             </template>
         </ul>
-        <p x-show="$store.cart.items.length > 0">
+        <p id="subtotal" x-show="$store.cart.items.length > 0">
             Subtotal: <span x-text="'$' + $store.cart.subtotal.toFixed(2)"></span>
         </p>
 

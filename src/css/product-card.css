@@ -1,0 +1,63 @@
+@scope (.product-wrapper) {
+    :scope {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+        grid-auto-rows: auto;
+        gap: var(--xtra-small);
+    }
+    a.product {
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        justify-items: center;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+        font-size: var(--small);
+        font-weight: bold;
+        position: relative;
+        overflow: clip;
+        transition: filter var(--transition) ease;
+        img {
+            width: 100%;
+            height: auto;
+            transition: filter var(--transition) ease;
+            filter: blur(2px);
+        }
+        img,
+        span {
+            grid-column: 1/2;
+            grid-row: 1/2;
+            transition: opacity var(--transition) ease;
+            z-index: 1;
+        }
+        span {
+            filter: drop-shadow(3px 3px 0 black);
+        }
+        .cta {
+            opacity: 0;
+            pointer-events: none;
+        }
+        &:hover img,
+        &:focus-visible img,
+        &:focus-within img {
+            filter: brightness(0.6);
+        }
+        &:hover .cta,
+        &:focus-visible .cta,
+        &:focus-within .cta {
+            opacity: 1;
+        }
+        &:hover span:not(.cta),
+        &:focus-visible span:not(.cta),
+        &:focus-within span:not(.cta) {
+            opacity: 0;
+        }
+        &:hover,
+        &:focus-visible,
+        &:focus-within {
+            filter: drop-shadow(0 3px 3px black);
+        }
+    }
+}
