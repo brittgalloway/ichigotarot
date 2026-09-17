@@ -166,6 +166,46 @@ nav {
         }
     }
 }
+/* SITE CART TRIGGER */
+#site-cart-trigger {
+    position: fixed;
+    top: var(--xtra-small);
+    right: var(--xtra-small);
+    z-index: 100;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-purple);
+    transition: color var(--transition);
+    &:hover {
+        color: var(--primary-blue);
+    }
+    svg {
+        width: 32px;
+        height: 32px;
+    }
+}
+#site-cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--primary-purple);
+    color: #FFFFFF;
+    border-radius: 50%;
+    font-family: var(--body-font);
+    font-size: 0.75rem;
+    line-height: 1;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+}
 .container {
     height: 100vh;
     overflow-x: hidden;

@@ -3,37 +3,40 @@
     "title": "PPT Deck",
     "slug": "ppt-deck",
     "collection": "PPT",
+    "stripeProductId": "prod_VGh9LU3ZRxDpbg",
     "img": "./src/assets/ppt-deck.webp",
-    "shortDescription": "Full 78 card PPT tarot deck on 350gsm cardstock with japanese black core. Full color guide book included.",
-    "description": "The PPT deck is a full 78 card tarot deck! Let the moonlight and magical girl engery guide you.  Made on 350gsm cardstock with japanese black core and lots of love.",
+    "shortDescription": "Full 78-card PPT tarot deck on 350gsm cardstock with Japanese black core. Full-color guidebook included.",
+    "description": "The PPT deck is a full 78-card tarot deck! Let the moonlight and magical girl engery guide you.  Made on 350gsm cardstock with Japanese black core and lots of love.",
     "shipping": "domestic",
     "variants": [
-      { "label": "Default", "price": "120.00" }
+      { "label": "Default", "price": "120.00", "stripeLookupKey": "ppt-deck-price" }
     ]
   },
   {
     "title": "PPT Bundle",
     "slug": "ppt-bundle",
     "collection": "PPT",
+    "stripeProductId": "prod_VGhsIfq3bQ2lzf",
     "img": "./src/assets/ppt-bundle-tarot-oracle-journal.webp",
-    "shortDescription": "Beatiful collector's box: PPT Tarot deck, Moonlight Oracle, PPT Journal, and matchsticks.",
+    "shortDescription": "Beautiful collector's box: PPT Tarot deck, Moonlight Oracle, PPT Journal, and matchsticks.",
     "description": "The full 78 card PPT tarot deck! 350gsm cardstock with japanese black core. A full color guide book is included with the deck.The full bundle comes with a journal to document your tarot readings, a mini oracle deck, and matchsticks to light your candles -- all in a beautiful collector's box.",
     "shipping": "domestic",
     "variants": [
-      { "label": "Default", "price": "210.00" }
+      { "label": "Default", "price": "210.00", "stripeLookupKey": "ppt-bundle-price"}
     ]
   },
   {
     "title": "PPT Matchbooks",
     "slug": "ppt-matchbooks",
     "collection": "PPT",
+    "stripeProductId": "prod_VGhwCM86aJDWBM",
     "img": "./src/assets/ppt-matchbooks.webp",
-    "shortDescription": "PPT matchbook",
-    "description": "The PPT Matchbooks feature your favorite senshi's wands! Inner Senshi has 2 rows of the main 5 (10 matches total) while the Outter Senshi has 2 rows of 10 (20 matches total).",
+    "shortDescription": "PPT matchbook featuring your favorite senshi's wands.",
+    "description": "The PPT Matchbooks feature your favorite senshi's wands! Inner Senshi has 2 rows of the main 5 (10 matches total) while the Outer Senshi has 2 rows of 10 (20 matches total).",
     "shipping": "domestic",
     "variants": [
-      { "label": "Inner Senshi", "price": "6.00" },
-      { "label": "Outter Senshi", "price": "10.00" }
+      { "label": "Inner Senshi", "price": "6.00", "stripeLookupKey": "ppt-matchbook-inner-price"},
+      { "label": "Outer Senshi", "price": "10.00","stripeLookupKey": "ppt-matchbook-outer-price" }
     ]
   }
 ]

@@ -1,21 +1,34 @@
-<dialog id="site-cart-dialog" x-data>
-    <button id="site-cart-close" aria-label="Close cart">Close</button>
-    <h2>Your Cart</h2>
-    <p x-show="$store.cart.items.length === 0">Cart is empty.</p>
+<div x-data="cartUi()">
+    <button id="site-cart-trigger" type="button" aria-label="Open cart">
+        Cart
+        <span id="site-cart-count" x-show="$store.cart.count > 0" x-text="$store.cart.count"></span>
+    </button>
+    <dialog id="site-cart-dialog">
+        <button id="site-cart-close" aria-label="Close cart">Close</button>
+        <h2>Your Cart</h2>
+        <p x-show="$store.cart.items.length === 0">Cart is empty.</p>
+    
+        <ul x-show="$store.cart.items.length > 0">
+            <template x-for="item in $store.cart.items" :key="item.slug + '-' + item.variantLabel">
+                <li>
+                    <img :src="item.img" :alt="item.title"/>
+                    <span x-text="item.title"></span>
+                    <span x-text="item.variantLabel"></span>
+                    <span x-text="'$' + item.price"></span>
+                    <input type="number" min="0" :value="item.quantity" @change="$store.cart.updateQuantity(item.slug, item.variantLabel, parseInt($event.target.value))" />
+                    <button type="button" @click="$store.cart.removeItem(item.slug, item.variantLabel)">Remove</button>
+                </li>
+            </template>
+        </ul>
+        <p x-show="$store.cart.items.length > 0">
+            Subtotal: <span x-text="'$' + $store.cart.subtotal.toFixed(2)"></span>
+        </p>
 
-    <ul x-show="$store.cart.items.length > 0">
-        <template x-for="item in $store.cart.items" :key="item.slug + '-' + item.variantLabel">
-            <li>
-                <img :src="item.img" :alt="item.title"/>
-                <span x-text="item.title"></span>
-                <span x-text="item.variantLabel"></span>
-                <span x-text="'$' + item.price"></span>
-                <input type="number" min="0" :value="item.quantity" @change="$store.cart.updateQuantity(item.slug, item.variantLabel, parseInt($event.target.value))" />
-                <button type="button" @click="$store.cart.removeItem(item.slug, item.variantLabel)">Remove</button>
-            </li>
-        </template>
-    </ul>
-    <p x-show="$store.cart.items.length > 0">
-        Subtotal: <span x-text="'$' + $store.cart.subtotal.toFixed(2)"></span>
-    </p>
-</dialog>
+        <p x-show="error" x-text="error" class="cart-error"></p>
+
+        <button type="button" x-show="$store.cart.items.length > 0" :disabled="checkingOut" @click="checkout()" class="button">
+            <span x-show="!checkingOut">Checkout</span>
+            <span x-show="checkingOut">Redirecting to checkout&hellip;</span>
+        </button>
+    </dialog>
+</div>
