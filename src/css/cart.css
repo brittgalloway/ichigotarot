@@ -8,6 +8,7 @@
         border: none;
         cursor: pointer;
         padding: 0;
+        margin: 1.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -33,10 +34,11 @@
         line-height: 1;
         min-width: 18px;
         height: 18px;
+        font-weight: bold;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0 4px;
+        padding: 4px;
     }
     dialog {
         display: flex;

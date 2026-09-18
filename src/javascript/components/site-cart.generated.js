@@ -2,7 +2,7 @@
     // Edit site-cart.partial.html instead, then run: node scripts/build-components.js
      export const markup = `<div x-data="cartUi()">
     <button id="site-cart-trigger" type="button" aria-label="Open cart">
-        Cart
+        <img src="./src/assets/basket.svg" width="50px" height="auto" />
         <span id="site-cart-count" x-show="$store.cart.count > 0" x-text="$store.cart.count"></span>
     </button>
     <dialog id="site-cart-dialog">
