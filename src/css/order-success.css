@@ -1,0 +1,11 @@
+@scope(#checkout-success) {
+    :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--small);
+    }
+    .button {
+        max-width: fit-content;
+        align-self: center;
+    }
+}
