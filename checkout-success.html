@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Thank you! | Ichigo Tarot</title>
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/base.css">
+    <link rel="stylesheet" href="./src/css/layout.css">
+    <link rel="stylesheet" href="./src/css/nav.css">
+    <link rel="stylesheet" href="./src/css/cart.css">
+</head>
+
+<body>
+    <site-nav></site-nav>
+    <star-template class="hidden"></star-template>
+    <div class="container">
+        <header id="header">
+            <h1>Thank You!</h1>
+            <hr>
+            <p>Your order is on its way.</p>
+        </header>
+        <main>
+            <section id="checkout-success">
+                <p>We&apos;ve emailed your receipt. You&apos;ll hear from us again once your order ships.</p>
+                <a href="./catalog.html" class="button">Continue Shopping</a>
+            </section>  
+        </main>
+        <site-cart></site-cart>
+        <site-footer></site-footer>
+    </div>
+    <script type="text/javascript">
+        localStorage.removeItem('ichigotarot-cart');
+    </script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script type="module" src="./src/javascript/main.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.1/cdn.min.js"></script>
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '1629094');
+    </script>
+    <!-- End MailerLite Universal -->
+
+</body>
+
+</html>

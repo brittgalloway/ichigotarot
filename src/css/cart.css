@@ -1,0 +1,125 @@
+@scope (site-cart) {
+    #site-cart-trigger {
+        position: fixed;
+        top: var(--xtra-small);
+        right: var(--xtra-small);
+        z-index: 100;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-purple);
+        transition: color var(--transition);
+        &:hover {
+            color: var(--primary-blue);
+        }
+        svg {
+            width: 32px;
+            height: 32px;
+        }
+    }
+    #site-cart-count {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background: var(--primary-purple);
+        color: #FFFFFF;
+        border-radius: 50%;
+        font-family: var(--body-font);
+        font-size: 0.75rem;
+        line-height: 1;
+        min-width: 18px;
+        height: 18px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px;
+    }
+    dialog {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1rem;
+        width: 500px;
+        max-width: 80%;
+        color: var(--primary-purple);
+        border: 5px solid white;
+        border-radius: 12px;
+        background: var(--primary-pink);
+    }
+    dialog::backdrop {
+        background: var(--primary-purple);
+        opacity: .5;
+    }
+    dialog:not([open]) {
+        display: none;
+    }
+    .cart-error {
+        color: red;
+        font-weight: bold;
+    }
+    #site-cart-close {
+        align-self: end;
+        cursor: pointer;
+    }
+    li {
+        display: grid;
+        grid-template-columns: 100px 1fr 50px;
+        grid-template-rows: repeat(4, auto);
+        gap: 0.5rem;
+        margin: 1rem;
+        border: 3px dashed white;
+        border-radius: 6px;
+        padding: 1rem;
+        font-family: var(--body-font);
+    }
+    img {
+        grid-column: 1 / 2;
+        grid-row: 1 / 5;
+        max-width: 100px;
+        height: auto;
+    }
+    .title,
+    .price-wrap,
+    .variant,
+    fieldset {
+        grid-column: 2 / 3;
+        justify-self: end;
+    }
+    .title {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    .price {
+        font-size: 1.5rem;
+    }
+    fieldset {
+        display: flex;
+        flex-flow: row wrap;
+        gap: .5em;
+        justify-self: end;
+        align-items: center;
+    }
+
+    input:invalid {
+        border: 6px solid red;
+    }
+    #subtotal span {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    button {
+        grid-column: 3 / 4;
+        grid-row: 4 / 5;
+    }
+    @media (width < 500px ) {
+        ul {
+            max-height: 300px;
+            overflow: scroll;
+        }
+    }
+}
