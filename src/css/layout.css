@@ -1,0 +1,159 @@
+body {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    color: var(--text-color);
+    background: var(--primary-pink);
+    text-align: center;
+    overflow: clip;
+    @media (width < 830px) {
+        display: block;
+        overflow-y: auto;
+    }
+}
+.container {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    grid-column: 2/3;
+    @media (width < 830px) {
+        height: auto;
+    }
+}
+header,
+main > section:not(#shop),
+#shop > div,
+footer {
+    padding: var(--medium);
+    position: relative;
+    box-shadow: 0 5px 5px #00000025;
+    overflow: hidden;
+    @media (width < 830px) {
+        padding: var(--small);
+    }
+}
+footer {
+    box-shadow: none;
+    @media (width < 500px) {
+        padding: 0;
+    }
+    p {
+        margin: 1rem;
+    }
+}
+header {
+    background-image: url(../assets/tarot-spread.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    z-index: 7;
+    padding-top: var(--top-padding);
+    p {
+        font-size: var(--small);
+        font-weight: bold;
+        color: white;
+        filter: drop-shadow(3px 3px 0 var(--primary-purple));
+    }
+}
+main {
+    background: var(--pastle-purple);
+}
+.position1,
+.position2{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    box-shadow: 0 5px 5px #00000025;
+    h2 {
+        font-size: 3rem;
+    }
+    p {
+        text-align: right;
+        justify-self: end;
+    }
+    @media (width < 500px) {
+        gap: var(--xtra-small);
+        
+    }
+}
+.position1{
+    background: var(--primary-pink);
+    z-index: 6;
+    p,
+    .button {
+        grid-column: 2 / 3;
+        width: fit-content;
+        height: fit-content;
+    }
+    .button {
+        align-self: end;
+        justify-self: end;
+    }
+    @media (width < 500px) {
+        p,
+        h2,
+        .button {
+            grid-column: 1 / 3;
+        }
+    }
+}
+.position2{
+    z-index: 5;
+    background: var(--primary-purple);
+    h2,
+    p {
+        color: white;
+    }
+    h2 {
+        filter: drop-shadow(3px 3px 0 black);
+        grid-column: 2 / 3;
+    }
+    p {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        text-align: left;
+        justify-self: start;
+        align-self: center;
+    }
+    @media (width < 500px) {
+        p,
+        h2 {
+            grid-row: 2/3;
+            grid-column: 1 / 3;
+        }
+        h2 {
+            grid-row: 1/2;
+        }
+    }
+}
+#products{
+    z-index: 4;
+    background: var(--primary-blue);
+}
+#about{
+    z-index: 3;
+}
+#upcoming-projects{
+    background-image: url(../assets/chamber-time-bg_inverted.webp);
+    background-color: var(--primary-purple);
+    background-blend-mode: overlay;
+    color: white;
+    z-index: 2;
+    h2,
+    h3 {
+        color: white;
+        filter: drop-shadow(3px 3px 0 var(--text-color));
+    }
+    p {
+        background: rgba(0, 0, 0, 30%);
+    }
+}
+#contact{
+    background: var(--pastle-green);
+}
+/* mailerlite */
+.ml-embedded {
+    margin-top: var(--medium);
+}
+#mlb2-45057527.ml-form-embedContainer {
+    display: block !important;
+}

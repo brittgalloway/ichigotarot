@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description"
+        content="Shop luxury tarot decks crafted with gilded edges, premium cardstock, and original artwork." href="./src/assets/favicon.ico" type="image/x-icon">
+    <title>Shop | Ichigo Tarot</title>
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/base.css">
+    <link rel="stylesheet" href="./src/css/layout.css">
+    <link rel="stylesheet" href="./src/css/nav.css">
+    <link rel="stylesheet" href="./src/css/product-card.css">
+    <link rel="stylesheet" href="./src/css/cart.css">
+</head>
+
+<body>
+    <site-nav></site-nav>
+    <star-template class="hidden"></star-template>
+    <div class="container">
+        <header id="header">
+            <h1>Shop</h1>
+            <hr>
+            <p>Tarot is a powerful tool for exploring you inner world and doing deep shadow work. This tarot is the perfect way to connect with their own inner voice to find a path towards transformation.</p>
+        </header>
+        <main>
+            <section id="catalog" x-data="productGrid()">
+                <p x-show="loading">Loading products&hellip;</p>
+                <p x-show="error">Something went wrong loading the shop. Please refresh.</p>
+                <div id="products">
+                    <div class="product-wrapper" x-show="!loading && !error">
+                        <template x-for="product in products" :key="product.slug">
+                            <a class="product"
+                                :href="`./product.html?slug=${product.slug}`"
+                                :aria-label="`View ${product.title} details.`">
+                                <img :src="product.img[0]" :alt="product.title" />
+                                <span x-text="product.title"></span>
+                                <span class="cta" x-text="displayPrice(product)"></span>
+                            </a>
+                        </template>
+                    </div>
+                </div>
+            </section>  
+        </main>
+        <site-cart></site-cart>
+        <site-footer></site-footer>
+    </div>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script type="module" src="./src/javascript/main.js"></script>
+    <script type="module" src="./src/javascript/product-grid.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.1/cdn.min.js"></script>
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '1629094');
+    </script>
+    <!-- End MailerLite Universal -->
+
+</body>
+
+</html>
