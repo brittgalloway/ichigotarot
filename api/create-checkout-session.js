@@ -15,7 +15,10 @@ function chunk(array, size) {
     return chunks;
 }
 
-const SHIPPING_METHODS =[
+const WEIGHT_INCREMENT_OZ = 8;
+const DEFAULT_ITEM_WEIGHT_OZ = WEIGHT_INCREMENT_OZ;
+
+const SHIPPING_METHODS = [
     {
         key: 'ground',
         displayName: 'Ground Shipping',
