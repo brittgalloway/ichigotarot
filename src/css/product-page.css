@@ -29,17 +29,18 @@
             overflow-y: auto;
             overflow-x: clip;
             max-width: 100%;
-            max-height: 400px;
+            max-height: 500px;
             scrollbar-color: white var(--pastle-purple);
             scrollbar-width: thin;
         }
     }
     img {
         width: 100%;
-        height: auto;
+        height: min-content;
         margin: var(--small);
     }
-    img:first-of-type {
+    img:first-of-type,
+    img:last-of-type {
         margin-left: 0;
          @media (width > 500px ) {
             margin-top: 0;
@@ -52,7 +53,7 @@
         gap: var(--xtra-small);
     }
     h1 {
-        font-size: var(--small);
+        font-size: var(--medium);
     }
     h3 {
         display: none;
