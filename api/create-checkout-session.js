@@ -20,7 +20,7 @@ const SHIPPING_METHODS =[
         key: 'ground',
         displayName: 'Ground Shipping',
         baseCents: 1200,
-        perExtraItemCents: 200,
+        perIncrementCents: 200,
         estimate: {
             minimum: {unit: 'business_day', value: 5},
             maximum: {unit: 'business_day', value: 7}
@@ -30,7 +30,7 @@ const SHIPPING_METHODS =[
         key: 'priority',
         displayName: 'Priority Shipping',
         baseCents: 1700,
-        perExtraItemCents: 200,
+        perIncrementCents: 200,
         estimate: {
             minimum: {unit: 'business_day', value: 2},
             maximum: {unit: 'business_day', value: 4}
@@ -38,10 +38,10 @@ const SHIPPING_METHODS =[
     },
 ];
 
-function buildShippingOptions(totalQuantity) {
+function buildShippingOptions(totalWeightOz) {
+    const extraIncrements = Math.max(0, Math.ceil((totalWeightOz - WEIGHT_INCREMENT_OZ) / WEIGHT_INCREMENT_OZ));
     return SHIPPING_METHODS.map((method) => {
-        const extraItems = Math.max(0, totalQuantity - 1);
-        const amount = method.baseCents + method.perExtraItemCents * extraItems;
+        const amount = method.baseCents + method.perIncrementCents * extraIncrements;
 
         return {
             shipping_rate_data: {
@@ -85,11 +85,13 @@ module.exports = async (req, res) => {
                 throw new Error(`No Stripe lookup key set for ${slug} (${variantLabel})`);
             }
 
+            const weightOz = typeof variant.weightOz === 'number' ? variant.weightOz : null;
             return {
                 slug,
                 variantLabel,
                 lookupKey: variant.stripeLookupKey,
-                quantity: Math.max(1, parseInt(quantity, 10) || 1)
+                quantity: Math.max(1, parseInt(quantity, 10) || 1),
+                weightOz
             };
     });
 
@@ -114,6 +116,13 @@ module.exports = async (req, res) => {
 
         return { price: price.id, quantity };
     });
+    const totalWeightOz = resolvedItems.reduce(
+        (sum, item) => sum + item.quantity * (item.weightOz ?? DEFAULT_ITEM_WEIGHT_OZ),
+        0
+    )
+
+    const shipping_options = buildShippingOptions(totalWeightOz);
+
     const origin = req.headers.origin || `https://${req.headers.host}`;
 
     const safeCancelUrl = (cancelUrl && cancelUrl.startsWith(origin))
