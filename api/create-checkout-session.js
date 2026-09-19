@@ -15,6 +15,48 @@ function chunk(array, size) {
     return chunks;
 }
 
+const SHIPPING_METHODS =[
+    {
+        key: 'ground',
+        displayName: 'Ground Shipping',
+        baseCents: 1200,
+        perExtraItemCents: 200,
+        estimate: {
+            minimum: {unit: 'business_day', value: 5},
+            maximum: {unit: 'business_day', value: 7}
+        }
+    },
+    {
+        key: 'priority',
+        displayName: 'Priority Shipping',
+        baseCents: 1700,
+        perExtraItemCents: 200,
+        estimate: {
+            minimum: {unit: 'business_day', value: 2},
+            maximum: {unit: 'business_day', value: 4}
+        }
+    },
+];
+
+function buildShippingOptions(totalQuantity) {
+    return SHIPPING_METHODS.map((method) => {
+        const extraItems = Math.max(0, totalQuantity - 1);
+        const amount = method.baseCents + method.perExtraItemCents * extraItems;
+
+        return {
+            shipping_rate_data: {
+                type: 'fixed_amount',
+                fixed_amount: { amount, currency: 'usd'},
+                display_name: method.displayName,
+                delivery_estimate: {
+                    minimum: method.estimate.minimum,
+                    maximum: method.estimate.maximum
+                }
+            }
+        };
+    });
+}
+
 module.exports = async (req, res) => {
     if (req.method !== 'POST') {
         res.setHeader('Allow', 'POST');
@@ -81,6 +123,10 @@ module.exports = async (req, res) => {
         const session = await stripe.checkout.sessions.create({
             mode: 'payment',
             line_items,
+            shipping_address_collection: {
+                allowed_countries: ['US']
+            },
+            shipping_options,
             success_url: `${origin}/checkout-success.html?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: safeCancelUrl,
             invoice_creation: { enabled: true }
