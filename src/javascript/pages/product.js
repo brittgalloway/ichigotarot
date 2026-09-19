@@ -4,6 +4,7 @@ document.addEventListener('alpine:init', () => {
         selectedVariant: null,
         loading: true,
         error: false,
+        quantity: 1,
 
         async init() {
             const slug = new URLSearchParams(window.location.search).get('slug');
@@ -50,7 +51,8 @@ document.addEventListener('alpine:init', () => {
                 title: this.product.title,
                 variantLabel: this.selectedVariant.label,
                 price: this.selectedVariant.price,
-                img: this.displayImage
+                img: this.displayImage,
+                quantity: this.quantity,
             });
 
             document.querySelector('site-cart')?.open()

@@ -11,7 +11,7 @@
         <ul x-show="$store.cart.items.length > 0">
             <template x-for="item in $store.cart.items" :key="item.slug + '-' + item.variantLabel">
                 <li>
-                    <img :src="item.img" :alt="item.title"/>
+                    <img :src="item.img[0]" :alt="item.title"/>
                     <span class="title" x-text="item.title"></span>
                     <span class="variant" x-text="item.variantLabel"></span>
                     <div class="price-wrap">
@@ -19,7 +19,7 @@
                         <span class="price" x-text="'$' + item.price"></span>
                     </div>
                     <fieldset>
-                        <label>Qty</label>
+                        <label>Qty:</label>
                         <input type="number" min="0" max="10" :value="item.quantity" @change="$store.cart.updateQuantity(item.slug, item.variantLabel, parseInt($event.target.value))" />
                     </fieldset>
                     <button aria-label="Remove item" type="button" @click="$store.cart.removeItem(item.slug, item.variantLabel)"><img src="./src/assets/strawberry-close.svg" width="20px" height="auto" /></button>

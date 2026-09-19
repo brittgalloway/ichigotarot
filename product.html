@@ -12,9 +12,8 @@
     <link rel="stylesheet" href="./src/css/base.css">
     <link rel="stylesheet" href="./src/css/layout.css">
     <link rel="stylesheet" href="./src/css/nav.css">
-    <link rel="stylesheet" href="./src/css/product-card.css">
+    <link rel="stylesheet" href="./src/css/product-page.css">
     <link rel="stylesheet" href="./src/css/cart.css">
-    <link rel="stylesheet" href="./src/css/sparkle.css">
 </head>
 
 <body>
@@ -32,25 +31,34 @@
                 </template>
                 <template x-if="!loading && !error && product">
                     <div class="product-detail">
-                        <img :src="displayImage" :alt="product.title" />
-
-                        <h2 x-text="product.title"></h2>
-                        <p class="price" x-text="displayPrice"></p>
-                        <fieldset x-show="product.variants.length > 1">
-                            <legend>Options</legend>
-                            <template x-for="variant in product.variants" :key="variant.label">
-                                <button
-                                    type="button"
-                                    @click="selectVariant(variant)"
-                                    :aria-pressed="selectedVariant ===variant"
-                                    :class="{ selected: selectedVariant === variant }"
-                                    x-text="variant.label"></button>
+                        <div class="product-images">
+                            <template x-for="(image, index) in product.img" :key="index">
+                                <img :src="image" :alt="product.title" />
                             </template>
-                        </fieldset>
-                        <button type="button" class="button" @click="addToCart()">Add to Cart</button>
-                        <div class="product-description">
-                            <h3>Description</h3>
-                            <p x-text="product.description"></p>
+                        </div>
+                        <div class="product-info">
+                            <p class="price" x-text="displayPrice"></p>
+                            <h1 x-text="product.title"></h1>
+                            <div class="product-description">
+                                <h3>Description</h3>
+                                <p x-text="product.description"></p>
+                            </div>
+                            <fieldset>
+                                <label x-show="product.variants.length > 1" for="variant">Variation</label>
+                                <select name="variant" id="variant"
+                                x-show="product.variants.length > 1"
+                                @change="selectVariant(product.variants.find(v => v.label === $event.target.value))"
+                                >
+                                <template x-for="variant in product.variants" :key="variant.label">
+                                    <option :value="variant.label" :selected="selectedVariant === variant" x-text="variant.label"></option>
+                                </template>
+                            </select>
+                            </fieldset>
+                            <fieldset>
+                                <label for="qty">Qty</label>
+                                <input id="qty" type="number" min="1" max="10" x-model.number="quantity" @change="quantity = Math.min(10, Math.max(1, quantity || 1))" />
+                            </fieldset>
+                            <button type="button" class="button" @click="addToCart()">Add to Cart</button>
                         </div>
                     </div>
                 </template>

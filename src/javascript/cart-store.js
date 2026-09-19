@@ -17,15 +17,15 @@ document.addEventListener('alpine:init', () => {
             localStorage.setItem('ichigotarot-cart', JSON.stringify(this.items));
         },
 
-        addItem({slug, title, variantLabel, price, img}) {
+        addItem({slug, title, variantLabel, price, img, quantity = 1}) {
             const existing = this.items.find(
                 (item) => item.slug === slug && item.variantLabel === variantLabel
             );
 
             if (existing) {
-                existing.quantity += 1;
+                existing.quantity += quantity;
             } else {
-                this.items.push({ slug, title, variantLabel, price, img, quantity: 1});
+                this.items.push({ slug, title, variantLabel, price, img, quantity});
             }
 
             this.persist();
@@ -61,7 +61,7 @@ document.addEventListener('alpine:init', () => {
             return this.items.reduce((sum, item) => {
                 const price = parseFloat(item.price);
                 return sum + (isNaN(price) ? 0 : price * item.quantity);
-            }, 0 );
+            }, 0);
         }
 
     })

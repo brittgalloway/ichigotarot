@@ -18,6 +18,8 @@
     --small: 2rem;
     --medium: 4rem;
     --large: 8rem;
+    --top-padding_mobile: 100px;
+    --top-padding: 70px;
 
     --transition: 300ms;
 }
@@ -79,6 +81,22 @@ hr {
     }
 }
 
+input,
+select {
+    border: 3px solid var(--primary-pink);
+    border-radius: 6px;
+    /* height: 36px; */
+    width: fit-content;
+    font-size: 1.5rem;
+    color: var(--primary-purple)
+}
+
 .hidden {
     display: none !important;
+}
+.falling-star {
+    position: absolute;
+    pointer-events: none;
+    fill: white;
+    filter: drop-shadow(3px 3px 0 var(--primary-purple));
 }

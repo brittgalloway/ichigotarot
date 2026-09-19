@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="./src/css/nav.css">
     <link rel="stylesheet" href="./src/css/product-card.css">
     <link rel="stylesheet" href="./src/css/cart.css">
-    <link rel="stylesheet" href="./src/css/sparkle.css">
 </head>
 
 <body>
@@ -35,7 +34,7 @@
                             <a class="product"
                                 :href="`./product.html?slug=${product.slug}`"
                                 :aria-label="`View ${product.title} details.`">
-                                <img :src="product.img" :alt="product.title" />
+                                <img :src="product.img[0]" :alt="product.title" />
                                 <span x-text="product.title"></span>
                                 <span class="cta" x-text="displayPrice(product)"></span>
                             </a>

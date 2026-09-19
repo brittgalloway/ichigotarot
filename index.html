@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="./src/css/nav.css">
     <link rel="stylesheet" href="./src/css/product-card.css">
     <link rel="stylesheet" href="./src/css/cart.css">
-    <link rel="stylesheet" href="./src/css/sparkle.css">
 </head>
 
 <body>
@@ -50,7 +49,7 @@
                     <div class="product-wrapper" x-show="!loading && !error">
                         <template x-for="product in products" :key="product.slug">
                             <a class="product" :href="`./product.html?slug=${product.slug}`" :aria-label="`View ${product.title} details.`">
-                                <img :src="product.img" :alt="`Ichigo Tarot's ${product.title}`" />
+                                <img :src="product.img[0]" :alt="`Ichigo Tarot's ${product.title}`" />
                                 <span x-text="product.title"></span>
                                 <span class="cta" x-text="displayPrice(product)"></span>
                             </a>
