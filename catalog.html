@@ -19,14 +19,14 @@
 <body>
     <site-nav></site-nav>
     <star-template class="hidden"></star-template>
-    <div class="container">
+    <div class="container" x-data="productGrid({collection: new URLSearchParams(window.location.search).get('collection')})">
         <header id="header">
-            <h1>Shop</h1>
+            <h1>Shop <span x-show="collection" x-text="collection"></span></h1>
             <hr>
             <p>Tarot is a powerful tool for exploring you inner world and doing deep shadow work. This tarot is the perfect way to connect with their own inner voice to find a path towards transformation.</p>
         </header>
         <main>
-            <section id="catalog" x-data="productGrid()">
+            <section id="catalog">
                 <p x-show="loading">Loading products&hellip;</p>
                 <p x-show="error">Something went wrong loading the shop. Please refresh.</p>
                 <div id="products">
@@ -41,6 +41,7 @@
                             </a>
                         </template>
                     </div>
+                    <a x-show="collection" href="./catalog.html" class="button">View all products</a>
                 </div>
             </section>  
         </main>

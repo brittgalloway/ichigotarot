@@ -1,4 +1,31 @@
 <footer>
-    <div class="ml-embedded" data-form="vGIgFX"></div>
+    <div class="contact">
+        <div id="social-media">
+            <a href="https://www.instagram.com/ichigotarotstudio/">instagram</a>
+            <!-- <a href="https://www.tiktok.com/@ichigostudios"></a> -->
+        </div>
+        <div class="ml-embedded" data-form="vGIgFX"></div>
+    </div>
+    <nav x-data="siteFooter()" class="collections" x-show="collections.length > 0">
+        <h2>Collections</h2>
+        <ul>
+            <template x-for="collection in collections" :key="collection">
+                <li>
+                    <a :href="'../catalog.html?collection=' + encodeURIComponent(collection)" x-text="collection"></a>
+                </li>
+            </template>
+        </ul>
+    </nav>
+    <nav class="terms">
+        <h2>Info</h2>
+        <ul>
+            <li>
+                <a href="/policies.html">Policies</a>
+            </li>
+            <li>
+                <a href="/terms-conditions.html">Terms & Conditions</a>
+            </li>
+        </ul>
+    </nav>
     <p>Ichigo Tarot 2026</p>
 </footer>

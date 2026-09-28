@@ -49,13 +49,11 @@ h3,
 h4 {
     font-size: 2rem;
 }
-p,
-footer {
+p {
     font-family: var(--body-font);
     font-size: 1.25rem;
     line-height: 1.5;
     width: 60ch;
-    max-width: 100%;
     text-align: center;
     margin: auto;
 }
@@ -99,4 +97,80 @@ select {
     pointer-events: none;
     fill: white;
     filter: drop-shadow(3px 3px 0 var(--primary-purple));
+}
+
+@scope(.text-page) {
+    :scope {
+        padding: 70px var(--small);
+    }
+    h1 {
+        font-size: var(--medium);
+    }
+    h2 {
+        font-size: 1.5rem;
+        width: 60ch;
+        margin: var(--small) auto;
+        filter: none;
+    }
+    p,
+    li {
+        text-align: start;
+    }
+    li {
+        list-style: disc;
+        font-family: var(--body-font);
+        font-size: 1.5rem;
+        margin: 1rem auto;
+    }
+    a {
+        font-size: 1.5rem;
+        color: var(--text-color);
+        margin: var(--medium);
+        display: block;
+        filter: drop-shadow(0 0 0 white);
+        transition: filter var(--transition) ease;
+        &:hover {
+            filter: drop-shadow(3px 3px 0 white);
+        }
+    }
+}
+@scope(footer) {
+    :scope {
+        display: flex;
+        flex-flow: row wrap;
+        max-width: 100%;
+    }
+    h2 {
+        font-size: var(--small);
+    }
+    .contact,
+    .collections,
+    .terms {
+        width: 90%;
+        margin: 1rem auto;
+        @media (width > 500px) {
+            margin: 0 auto;
+            width: 33%;
+        }
+    }
+    p {
+        width: 100%;
+    }
+    a {
+        font-size: 1.5rem;
+        font-family: var(--body-font);
+        color: var(--text-color);
+        margin: var(--medium) auto;
+        display: block;
+        filter: drop-shadow(0 0 0 white);
+        transition: filter var(--transition) ease;
+        &:hover {
+            filter: drop-shadow(3px 3px 0 white);
+        }
+    }
+    #social-media {
+        a {
+            margin: 0;
+        }
+    }
 }

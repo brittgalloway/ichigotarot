@@ -3,6 +3,8 @@ document.addEventListener('alpine:init', () => {
         products: [],
         loading: true,
         error: false,
+        collection: options.collection || null,
+
 
         async init() {
             try {
@@ -11,8 +13,8 @@ document.addEventListener('alpine:init', () => {
                 if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
                 const all = await res.json();
 
-                this.products = options.collection
-                    ? all.filter((p) => p.collection === options.collection)
+                this.products = this.collection
+                    ? all.filter((p) => p.collection === this.collection)
                     : all;
             } catch (err) {
                 console.error('Failed to load products:', err);
