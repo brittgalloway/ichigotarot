@@ -23,17 +23,17 @@ const SHIPPING_METHODS = [
         key: 'ground',
         displayName: 'Ground Shipping',
         baseCents: 1200,
-        perIncrementCents: 200,
+        perIncrementCents: 100,
         estimate: {
-            minimum: {unit: 'business_day', value: 5},
-            maximum: {unit: 'business_day', value: 7}
+            minimum: {unit: 'business_day', value: 2},
+            maximum: {unit: 'business_day', value: 5}
         }
     },
     {
         key: 'priority',
         displayName: 'Priority Shipping',
         baseCents: 2000,
-        perIncrementCents: 200,
+        perIncrementCents: 100,
         estimate: {
             minimum: {unit: 'business_day', value: 2},
             maximum: {unit: 'business_day', value: 4}

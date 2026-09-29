@@ -6,7 +6,7 @@
     "stripeProductId": "prod_VGh9LU3ZRxDpbg",
     "img": ["./src/assets/ppt-deck.webp"],
     "shortDescription": "Full 78-card PPT tarot deck on 350gsm cardstock with Japanese black core. Full-color guidebook included. This is final sale.",
-    "description": "The PPT deck is a full 78-card tarot deck! Let the moonlight and magical girl engery guide you.  Made on 350gsm cardstock with Japanese black core and lots of love. This is final sale.",
+    "description": "The PPT deck is a full 78-card tarot deck! Let the moonlight and magical girl engery guide you.  Made on 350gsm cardstock with Japanese black core and lots of love. *This is final sale.*",
     "shipping": "domestic",
     "variants": [
       { "label": "", "price": "120.00", "stripeLookupKey": "ppt-deck-price" }
@@ -18,8 +18,8 @@
     "collection": "PPT",
     "stripeProductId": "prod_VGhsIfq3bQ2lzf",
     "img": ["./src/assets/ppt-collectors-box.webp"],
-    "shortDescription": "Beautiful collector's box: PPT Tarot deck, Moonlight Oracle, PPT Journal, and matchsticks.This is final sale.",
-    "description": "The full 78 card PPT tarot deck! 350gsm cardstock with japanese black core. A full color guide book is included with the deck.The full bundle comes with a journal to document your tarot readings, a mini oracle deck, and matchsticks to light your candles -- all in a beautiful collector's box. This is final sale.",
+    "shortDescription": "Beautiful collector's box: PPT Tarot deck, Moonlight Oracle, PPT Journal, and matchsticks. This is final sale.",
+    "description": "The full 78-card PPT tarot deck! 350gsm cardstock with Japanese black core. A full color guide book is included with the deck.The full bundle comes with a journal to document your tarot readings, a mini oracle deck, and matchsticks to light your candles -- all in a beautiful collector's box. *This is final sale.*",
     "shipping": "domestic",
     "variants": [
       { "label": "", "price": "210.00", "stripeLookupKey": "ppt-bundle-price"}
