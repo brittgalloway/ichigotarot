@@ -32,7 +32,7 @@ const SHIPPING_METHODS = [
     {
         key: 'priority',
         displayName: 'Priority Shipping',
-        baseCents: 2000,
+        baseCents: 2400,
         perIncrementCents: 100,
         estimate: {
             minimum: {unit: 'business_day', value: 2},

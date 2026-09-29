@@ -50,6 +50,7 @@ table {
 button {
 	background: transparent;
 	border: none;
+	cursor: pointer;
 }
 h1,
 h2,

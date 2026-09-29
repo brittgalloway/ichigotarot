@@ -37,7 +37,8 @@
     img {
         width: 100%;
         height: min-content;
-        /* margin: var(--small); */
+        max-height: 550px;
+        margin: var(--small);
     }
     img:first-of-type,
     img:last-of-type {

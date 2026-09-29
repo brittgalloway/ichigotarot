@@ -32,7 +32,7 @@ document.addEventListener('alpine:init', () => {
                 window.location.href = url;
             } catch (err) {
                 console.error(`Checkout error: ${err}`);
-                this.error = 'Something went wrong starting the checkout. Please try agian.'
+                this.error = 'Something went wrong with the checkout. Please try agian.'
                 this.checkingOut = false;
             }
         }
