@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	scrollbar-gutter: stable;
 }
 ol, ul {
 	list-style: none;
@@ -49,4 +50,21 @@ table {
 button {
 	background: transparent;
 	border: none;
+	cursor: pointer;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-wrap: balance;
+	max-width: 100%;
+}
+p,
+li,
+figcaption {
+	width: 65ch;
+	text-wrap: pretty;
+	max-width: 100%;
 }

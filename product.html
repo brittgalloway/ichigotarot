@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description"
+        content="Shop luxury tarot decks crafted with gilded edges, premium cardstock, and original artwork.">
+    <link rel="icon" href="./src/assets/favicon.ico" type="image/x-icon">
+    <title>Product | Ichigo Tarot</title>
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/base.css">
+    <link rel="stylesheet" href="./src/css/layout.css">
+    <link rel="stylesheet" href="./src/css/nav.css">
+    <link rel="stylesheet" href="./src/css/product-page.css">
+    <link rel="stylesheet" href="./src/css/cart.css">
+</head>
+
+<body>
+    <site-nav></site-nav>
+    <star-template class="hidden"></star-template>
+    <div class="container" x-data="productPage()">
+        <main>
+            <section id="product-details">
+                <p x-show="loading">Loading product&hellip;</p>
+                <template x-if="!loading && error">
+                    <div>
+                        <p>We couldn&apos;t find that product.</p>
+                        <a href="./catalog.html" class="button">Back to Shop</a>
+                    </div>
+                </template>
+                <template x-if="!loading && !error && product">
+                    <div class="product-detail">
+                        <div class="product-images">
+                            <template x-for="(image, index) in product.img" :key="index">
+                                <img :src="image" :alt="product.title" />
+                            </template>
+                        </div>
+                        <div class="product-info">
+                            <p class="price" x-text="displayPrice"></p>
+                            <h1 x-text="product.title"></h1>
+                            <div class="product-description">
+                                <h3>Description</h3>
+                                <p x-text="product.description"></p>
+                            </div>
+                            <fieldset>
+                                <label x-show="product.variants.length > 1" for="variant">Variation</label>
+                                <select name="variant" id="variant"
+                                x-show="product.variants.length > 1"
+                                @change="selectVariant(product.variants.find(v => v.label === $event.target.value))"
+                                >
+                                <template x-for="variant in product.variants" :key="variant.label">
+                                    <option :value="variant.label" :selected="selectedVariant === variant" x-text="variant.label"></option>
+                                </template>
+                            </select>
+                            </fieldset>
+                            <fieldset>
+                                <label for="qty">Qty</label>
+                                <input id="qty" type="number" min="1" max="10" x-model.number="quantity" @change="quantity = Math.min(10, Math.max(1, quantity || 1))" />
+                            </fieldset>
+                            <button type="button" class="button" @click="addToCart()">Add to Cart</button>
+                        </div>
+                    </div>
+                </template>
+            </section>  
+        </main>
+        <site-cart></site-cart>
+        <site-footer></site-footer>
+    </div>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script type="module" src="./src/javascript/main.js"></script>
+    <script type="module" src="./src/javascript/pages/product.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.1/cdn.min.js"></script>
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '1629094');
+    </script>
+    <!-- End MailerLite Universal -->
+
+</body>
+
+</html>
