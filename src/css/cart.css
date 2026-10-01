@@ -50,7 +50,6 @@
         border: 5px solid white;
         border-radius: 12px;
         background: var(--primary-pink);
-        opacity: 0;
         transition: opacity var(--transition) ease,
                 display var(--transition) ease allow-discrete;
     }
