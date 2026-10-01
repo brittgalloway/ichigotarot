@@ -13,9 +13,9 @@
         align-items: center;
         justify-content: center;
         color: var(--primary-purple);
-        transition: color var(--transition);
+        transition: filter var(--transition);
         &:hover {
-            color: var(--primary-blue);
+            filter: drop-shadow(3px 3px 0 black);
         }
         svg {
             width: 32px;
@@ -50,14 +50,24 @@
         border: 5px solid white;
         border-radius: 12px;
         background: var(--primary-pink);
-
+        transition: opacity var(--transition) ease,
+                display var(--transition) ease allow-discrete;
     }
     dialog::backdrop {
         background: var(--primary-purple);
-        opacity: .5;
+        opacity: 0;
+        transition: opacity var(--transition) ease,
+                display var(--transition) ease allow-discrete;
+    }
+    dialog[open]::backdrop {
+        opacity: 0.5;
+    }
+    dialog[open] {
+        opacity: 1;
     }
     dialog:not([open]) {
         display: none;
+        opacity: 0;
     }
     .cart-error {
         color: red;
@@ -147,6 +157,14 @@
         ul {
             max-height: 300px;
             overflow: scroll;
+        }
+    }
+    @starting-style {
+        dialog[open] {
+        opacity: 0;
+    }
+         dialog[open]::backdrop {
+            opacity: .5;
         }
     }
 }

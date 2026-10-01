@@ -40,6 +40,9 @@
         height: min-content;
         max-height: 550px;
         margin: var(--small);
+        @media (width < 500px) {
+            height: auto;
+        }
     }
     img:first-of-type,
     img:last-of-type {
