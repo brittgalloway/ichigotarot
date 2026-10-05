@@ -138,6 +138,7 @@ module.exports = async (req, res) => {
             shipping_address_collection: {
                 allowed_countries: ['US']
             },
+            allow_promotion_codes: true,
             shipping_options,
             success_url: `${origin}/checkout-success.html?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: safeCancelUrl,
