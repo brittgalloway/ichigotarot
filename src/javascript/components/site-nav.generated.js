@@ -255,6 +255,11 @@
                 Upcoming Projects
             </a>
         </li>
+        <li>
+            <a href="../../../index.html#in-touch">
+                Keep in Touch
+            </a>
+        </li>
     </ul>
 </nav>`
      
