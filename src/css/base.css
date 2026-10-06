@@ -24,34 +24,10 @@
     --transition: 300ms;
 }
 
-@view-transition {
-  navigation: auto;
+h1,
+h2 {
+  color: var(--text-header-color);
 }
-::view-transition-old(root) {
-  animation: fade-out var(--transition) ease both;
-}
-
-::view-transition-new(root) {
-  animation: slide-fade-in var(--transition) ease both;
-}
-
-@keyframes fade-out {
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes slide-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 
 /* TYPOGRAPHY */
 h1,

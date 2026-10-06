@@ -6,11 +6,23 @@ body {
     background: var(--primary-pink);
     text-align: center;
     overflow: clip;
+    animation: slide-fade-in 1s forwards;
     @media (width < 830px) {
         display: block;
         overflow-y: auto;
     }
 }
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .container {
     height: 100vh;
     overflow-x: hidden;
