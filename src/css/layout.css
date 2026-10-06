@@ -150,10 +150,7 @@ main {
 #contact{
     background: var(--pastle-green);
 }
-/* mailerlite */
-.ml-embedded {
-    margin-top: var(--medium);
-}
+
 #mlb2-45057527.ml-form-embedContainer {
     display: block !important;
 }
